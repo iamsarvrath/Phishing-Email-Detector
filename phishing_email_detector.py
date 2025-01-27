@@ -56,17 +56,17 @@ def phishing_email_detector(raw_email: str) -> None:
     """Main function to analyze an email and detect phishing indicators."""
     email = message_from_string(raw_email)
 
-    # Parse headers
+    
     headers = dict(email.items())
 
-    # Parse body
+   
     body = email.get_payload(decode=True).decode('utf-8', errors='ignore') if email.is_multipart() else email.get_payload()
 
-    # Analyze email
+   
     header_warnings = analyze_email_headers(headers)
     body_warnings = analyze_email_body(body)
 
-    # Output analysis
+   
     print("Phishing Email Analysis Report:\n")
 
     if header_warnings:
@@ -83,7 +83,7 @@ def phishing_email_detector(raw_email: str) -> None:
     else:
         print("No suspicious patterns detected in body.")
 
-# Example email for testing
+
 raw_email_example = """From: support@phishing-site.com
 Reply-To: support@scam.com
 Subject: Urgent: Account Verification Required
